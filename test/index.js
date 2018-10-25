@@ -15,8 +15,9 @@ const ssr = new Ssr({
 })
 
 ssr.prepare().then(() => {
-    http.createServer((req, res) => {
-        const rendered = ssr.render('page1')
+    http.createServer(async (req, res) => {
+        ssr.inject({ req, res })
+        const rendered = await ssr.render('page1')
         res.writeHead(200, {
             'Content-Type': 'text/html'
         })

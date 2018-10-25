@@ -5,6 +5,12 @@
 import React from 'react'
 
 export default class extends React.Component {
+    static async getInitialProps({ req, res }) {
+        return {
+            path: req.url
+        }
+    }
+
     constructor(props) {
         super(props)
 
@@ -14,7 +20,8 @@ export default class extends React.Component {
 
     initState() {
         this.state = {
-            pageName: 'page1'
+            pageName: 'page1',
+            path: this.props.path
         }
     }
 
@@ -25,6 +32,6 @@ export default class extends React.Component {
     }
 
     render() {
-        return <div onClick={this.updatePageName}>Hello from {this.state.pageName}</div>
+        return <div onClick={this.updatePageName}>Hello from {this.state.pageName}, url from {this.state.path}</div>
     }
 }

@@ -8,7 +8,7 @@ const Document = (props) => {
     const {
         pageStyles,
         pageScripts,
-        initialProps = {},
+        initialProps,
         publicPath,
         body,
         pageName,
